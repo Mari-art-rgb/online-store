@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class App {
     public static void main(String[] args) {
@@ -55,6 +56,21 @@ public class App {
     public static void displayProducts(Scanner scanner){
         try{
             BufferedReader buffReader = new BufferedReader(new FileReader("src/main/resources/products.csv"));
+
+            String productItem;
+            buffReader.readLine(); //.readLine == reads a line
+            while((productItem = buffReader.readLine()) != null) {
+                //Array?
+                String[] splitProductItem = productItem.split(Pattern.quote("|"));
+
+                String sku = splitProductItem[0];
+                String productName = splitProductItem[1];
+                double price = Double.parseDouble(splitProductItem[2]);
+                String department = splitProductItem[3];
+            }
+
+
+
 
         }catch (IOException e) {
             e.printStackTrace();
